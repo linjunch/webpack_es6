@@ -1,0 +1,17 @@
+**/*.svg
+**/*.png
+**/*.jpg
+**/*.jpeg
+.awcache
+.cache
+.gitignore
+.prettierignore
+.eslintignore
+.editorconfig
+.eslintcache
+.nvmrc
+License
+package.json
+/dist
+*.lock
+yarn-error.log
