@@ -384,7 +384,7 @@ import '@/iconfont/iconfont.css';
 // console.log(fruits.includes({ name: 'apple' }));
 // console.log(fruits.findIndex((item) => item.name === 'banana'));
 
-const arr = [123, '123', 'xxx', { name: 'xx' }, '123', 'xxx', 123, 321, 'lin', {}, null, null, {}, [], []];
+// const arr = [123, '123', 'xxx', { name: 'xx' }, '123', 'xxx', 123, 321, 'lin', {}, null, null, {}, [], []];
 
 // 无法判断引用类类型的数据，能判断null
 // const unique = (arr) => {
@@ -415,10 +415,71 @@ const arr = [123, '123', 'xxx', { name: 'xx' }, '123', 'xxx', 123, 321, 'lin', {
 //   return newArr;
 // };
 
-const unique = (arr) => {
-  return [...new Set(arr)];
-};
+// const unique = (arr) => {
+//   return [...new Set(arr)];
+// };
 
-console.log(unique(arr));
+// console.table(unique(arr));
 // [123, "123", "xxx", {…}, 321, "lin", {…}, null, {…}, Array(0), Array(0)]
 // console.log([...new Set(arr)]);
+
+// class User {
+//   // 构造器
+//   constructor(name, age) {
+//     this.name = name;
+//     this.age = age;
+//   }
+//   // 实例方法，通过实例对象调用
+//   hello() {
+//     console.log(`hello! I am ${this.name}`);
+//   }
+//   // 静态方法，通过User.info()调用
+//   static info() {
+//     console.log('this is an User Class');
+//   }
+//   // 暴露给实例对象的设置属性的方法
+//   set game(value) {
+//     this.gameName = value;
+//   }
+//   // 暴露给实例对象的获取属性的方法
+//   get game() {
+//     return this.gameName;
+//   }
+// }
+
+// const lin = new User('lin', 23);
+
+// console.log(lin); // User {name: "lin", age: 23}
+// lin.hello(); // hello! I am lin
+
+// User.info(); // this is an User Class
+
+// lin.game = 'mc';
+// console.log(lin); // User {name: "lin", age: 23, gameName: "dnf"}
+// console.log(lin.game); // mc
+
+// class MyArray extends Array {
+//   constructor(...props) {
+//     super(...props);
+//   }
+//   add(value) {
+//     this.push(value);
+//   }
+// }
+
+// const arr = new MyArray(1, 2, 3);
+// console.log(arr);
+
+// arr.add(123);
+// console.table(arr);
+
+const arr = [1, 2.3, 2];
+// 构造方法接受一个可迭代数据(数组，map，set)
+const xx = new Set(arr);
+console.log(xx);
+// 通过add（）添加
+xx.add(12);
+// 通过delete（）删除
+xx.delete(1);
+// 通过has（）检查
+add.has(2);
