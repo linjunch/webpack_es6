@@ -473,13 +473,156 @@ import '@/iconfont/iconfont.css';
 // arr.add(123);
 // console.table(arr);
 
-const arr = [1, 2.3, 2];
-// 构造方法接受一个可迭代数据(数组，map，set)
-const xx = new Set(arr);
-console.log(xx);
-// 通过add（）添加
-xx.add(12);
-// 通过delete（）删除
-xx.delete(1);
-// 通过has（）检查
-add.has(2);
+// console.log('====================构建====================');
+// // Set类似于数组，但是成员的值都是唯一的，没有重复的值
+// const arr = [1, 2.3, 2, 2];
+// const str = 'aanndasjasjdas';
+
+// // 构造方法接受一个具有 iterable 接口的其他数据结构(数组,set,字符串(相当于去重的split)，html节点)
+// const arrToSet = new Set(arr); // 数组去重
+// const strToSet = new Set(str); // 字符串去重
+
+// console.log(arrToSet); //Set(3) {1, 2.3, 2}
+// console.log(strToSet); // Set(5) {"a", "n", "d", "s", "j"}
+
+// console.log('====================原型====================');
+// // Set原型中的方法
+// /**
+//  * __proto__: Set
+//  *add: ƒ add()
+//  *clear: ƒ clear()
+//  *constructor: ƒ Set()
+//  *delete: ƒ delete()
+//  *entries: ƒ entries()
+//  *forEach: ƒ forEach()
+//  *has: ƒ has()
+//  *keys: ƒ values()
+//  *size: (...)
+//  *values: ƒ values()
+//  *Symbol(Symbol.iterator): ƒ values()
+//  *Symbol(Symbol.toStringTag): "Set"
+//  *get size: ƒ size()
+//  *__proto__: Object
+//  */
+
+// console.log('========================属性和方法===============================');
+// // 通过size获取Set长度，而不是length
+// console.log(arrToSet.size); // 3
+// console.log(arrToSet.length); // undefined
+
+// // 通过add（）添加,返回添加后的Set
+// console.log(arrToSet.add(2)); // Set(3) {1, 2.3, 2} 添加重复的值失败，但是依旧会返回Set
+// console.log(arrToSet.add(123)); // Set(4) {1, 2.3, 2, 123} 添加成功，返回新Set
+
+// // 通过delete（）删除，返回一个布尔值，表示删除是否成功
+// console.log(arrToSet.delete(1)); // true
+// console.log(arrToSet.delete(314)); //false
+
+// // 通过has（）检查，返回一个布尔值，表示该值是否为Set的成员。
+// console.log(arrToSet.has(2)); // true
+// console.log(arrToSet.has(314)); //false
+
+// // 通过clear（）清除所有成员，没有返回值。
+// // arrToSet.clear();
+
+// console.log('========================遍历===============================');
+// // 遍历 通过forEach和for（let value of Set)直接遍历
+// arrToSet.forEach((item) => {
+//   console.log(item);
+// });
+// /**
+//  * 2.3
+//  * 2
+//  * 123
+//  */
+
+// // 或者keys(),values(),entries()获取接口
+// for (let item of arrToSet.entries()) {
+//   console.log(item);
+// }
+// // Set的key和value相等
+// /**
+//  * (2) [2.3, 2.3]
+//  * (2) [2, 2]
+//  * (2) [123, 123]
+//  */
+
+const maps = new Map();
+console.log(maps);
+
+console.log('========================原型===============================');
+/**
+ * __proto__: Map
+ *clear: ƒ clear()
+ *constructor: ƒ Map()
+ *delete: ƒ delete()
+ *entries: ƒ entries()
+ *forEach: ƒ forEach()
+ *get: ƒ ()
+ *has: ƒ has()
+ *keys: ƒ keys()
+ *set: ƒ ()
+ *size: (...)
+ *values: ƒ values()
+ *Symbol(Symbol.iterator): ƒ entries()
+ *Symbol(Symbol.toStringTag): "Map"
+ *get size: ƒ size()
+ *__proto__: Object
+ */
+
+console.log('========================属性和方法===============================');
+// 通过size获取Set长度，而不是length
+console.log(maps.size); // 0
+console.log(maps.length); // undefined
+
+// 通过set（）添加,返回添加后的Map
+console.log(maps.set(123, 345)); // Map(1) {123 => 345}
+console.log(maps.set(true, 123)); // Map(2) {123 => 345, true => 123}
+console.log(maps.set('123', '321')); // Map(3) {123 => 345, true => 123, "123" => "321"}
+console.log(maps.set('123', '321321')); // Map(3) {123 => 345, true => 123, "123" => "321321"} 跟对象一样 没有重复的键 添加会覆盖原来的值
+
+// 通过get（key）获取value
+console.log(maps.get(true)); // 123
+console.log(maps.get(false)); // undefined
+
+// 通过delete(key)删除某一项，返回删除结果的bool值
+console.log(maps.delete(true)); // true
+console.log(maps.delete(false)); // false
+
+// 通过has(key),查找是否拥有当前这个键
+console.log(maps.has(123)); // true
+console.log(maps.has(true)); // false
+
+// 通过clear()清空map，无返回值
+// console.log(maps.clear()); // undefined
+// console.log(maps); // Map(0) {}
+
+console.log('========================遍历===============================');
+// 遍历 通过for（let item of Set)直接遍历
+// Set的for of调用的是values()接口，Map调用的是entries()
+for (let item of maps) {
+  console.log(item);
+}
+/**
+ * (2) [123, 345]
+ * (2) ["123", "321321"]
+ */
+
+// 或者keys(),values(),entries()获取接口
+for (let item of maps.entries()) {
+  console.log(item);
+}
+/**
+ * (2) [123, 345]
+ * (2) ["123", "321321"]
+ */
+
+// 这里的item是数组  数组是value
+for (let [key, value] of maps.entries()) {
+  console.log(key + '=>' + value);
+}
+
+const arr = [1, 2, 3];
+for (let value of arr) {
+  console.log(value);
+}
